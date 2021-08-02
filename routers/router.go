@@ -9,22 +9,32 @@ package routers
 
 import (
 	"OnlineResume-GoVersion/controllers"
-
 	beego "github.com/beego/beego/v2/server/web"
 )
 
 func init() {
-	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/object",
-			beego.NSInclude(
-				&controllers.ObjectController{},
-			),
-		),
-		beego.NSNamespace("/user",
-			beego.NSInclude(
-				&controllers.UserController{},
-			),
-		),
-	)
-	beego.AddNamespace(ns)
+	//ns := beego.NewNamespace("/v1",
+	//	beego.NSNamespace("/object",
+	//		beego.NSInclude(
+	//			&controllers.ObjectController{},
+	//		),
+	//	),
+	//	beego.NSNamespace("/user",
+	//		beego.NSInclude(
+	//			&controllers.UserController{},
+	//		),
+	//	),
+	//
+	//	// 自己实现的例子，练习用
+	//	beego.NSNamespace("/Hello",
+	//		beego.NSGet("h",func(ctx *context.Context) {
+	//		ctx.Output.Body([]byte("Hello"))
+	//	}),
+	//	),
+	//)
+	//beego.AddNamespace(ns)
+
+	// 路由注册
+	beego.Router("/Hello",&controllers.HelloController{},"*:Hello")
+
 }
